@@ -63,7 +63,7 @@ foreach($dado as $emailUsuarios):
     </td>
       <td>
          <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" codido="<?=$emailUsuarios["idusu"] ?>" email="<?=$emailUsuarios["emailusu"] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        <button type="button" class="btn btn-danger" codigo="<?=$emailUsuarios["idusu"] ?>" email="<?=$emailUsuarios["emailusu"] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">
         Excluir
         </button>
       </td>
@@ -90,7 +90,14 @@ foreach($dado as $emailUsuarios):
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Excluir</button>
+        
+
+        <form action="../controler/deletarusuario.php" method="get">
+      
+      <input type="hidden" class= "codigo form-control" name="codigoUsu">
+      <button type="submit" class="btn btn-primary">Excluir</button>
+
+      </form>
       </div>
     </div>
   </div>
@@ -106,6 +113,8 @@ var email = button.getAttribute ('email');
 var modalbody = deletarUsariomodal.querySelector('.modal-body');
 modalbody.textContent = 'Gostaria de excluir o E-mail' + email + '?';
 
+var Codigo = deletarUsariomodal.querySelector('.modal-footer .codigo');
+Codigo.value = codigo;
 })
 
 
