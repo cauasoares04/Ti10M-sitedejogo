@@ -33,7 +33,23 @@ include_once("../model/jogoModel.php");
       <th scope="col">Valor</th>
       <th scope="col">Quantidade</th>
       <th scope="col">Genero</th>
+      <th scope="col">Alterar</th>
+      <th scope="col">Excluir</th>
     </tr>
+   <td>
+      <form action="../view/alterarjogoform.php" method="post">
+      
+      <input type="hidden" value="<?=$generoJogo ["idusu"] ?>" name="idusu">
+      <button type="submit" class="btn btn-primary">Alterar</button>
+
+      </form>
+
+    </td>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" codigo="<?=$dado ["idusu"] ?>" email="<?=$dado["emailusu"] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        Excluir
+        </button>
+
   </thead>
   <tbody>
   <?php
@@ -46,7 +62,7 @@ $dado = visuJogoGenero($conn,$generojogo);
 foreach($dado as $generoJogo): 
 ?>
     <tr>
-      <th scope="row"><?=$generoJogo["idjogo"] ?></th>
+      <th scope="row"><?= $generoJogo["idjogo"] ?></th>
       <td><?=$generoJogo["nomejogo"] ?></td>
       <td><?=$generoJogo["valorjogo"] ?></td>
       <td><?=$generoJogo["qtdjogo"] ?></td>
@@ -56,6 +72,8 @@ foreach($dado as $generoJogo):
       endforeach;
     }
     ?>
+    
+    
   </tbody>
 </table>
 
